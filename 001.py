@@ -12,6 +12,8 @@ import urllib.request
 from PIL import Image
 from resizeimage import resizeimage
 
+import sys
+
 options = Options()
 options.add_argument("--user-data-dir=C:\\Users\\Anton\\AppData\\Local\\Google\\Chrome\\User Data\\Profile 1")
 
@@ -76,8 +78,8 @@ def init_driver():
     return driver
 
 
-def lookup(driver, query):
-    driver.get("https://market.yandex.ru/product--smartfon-apple-iphone-se-2020-128gb/661221014")
+def lookup(driver, url_to_parse):
+    driver.get(url_to_parse)
     try:
         take_features()
         press_some_button()
@@ -132,7 +134,8 @@ def lookup(driver, query):
 
 if __name__ == "__main__":
     driver = init_driver()
-    lookup(driver, "Selenium")
+    url_to_parse = sys.argv[1]
+    lookup(driver, url_to_parse)
     while True:
         time.sleep(1)
     driver.quit()
