@@ -45,6 +45,7 @@ def press_some_button():
             driver.find_element_by_xpath('.//*[@class="_19EZnB_hta"]').click()
     except:
         print("Нет кнопки ЕЩЕ")
+        click_on_image()
     time.sleep(2)
     ### КНОПКА ЕЩЕ ###
 
@@ -60,7 +61,7 @@ def read_description(string):
 def write_description_to_file(str):
     data = str.split("\n")
     f = open('out.txt', 'a', encoding='UTF-8')
-    str = "<h4>" + data.pop(0) + "<h4><br>\n"
+    str = "<h4>" + data.pop(0) + "<h4>\n"
     f.write(str)
 
     while data:
@@ -76,11 +77,11 @@ def init_driver():
 
 
 def lookup(driver, query):
-    driver.get("https://market.yandex.ru/product--naushniki-technics-rp-dj1210/264360")
+    driver.get("https://market.yandex.ru/product--smartfon-apple-iphone-se-2020-128gb/661221014")
     try:
         take_features()
         press_some_button()
-        click_on_image()
+        # click_on_image()
 
 
         image = driver.find_elements_by_xpath(".//*[@class=\"_2gUfndCf6w\"]")
